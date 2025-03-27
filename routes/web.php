@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\TipoProdutosController;
+use App\Http\Controllers\FornecedorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/produtos',[ProdutosController::class, 'show'])->name('produtos.show');
+Route::get('/produtos/novo',[ProdutosController::class, 'novo']) ->name('produtos.novo');
+Route::post('/produtos/Novo',[ProdutosController::class, 'inserir'])->name('produtos.inserir');
+Route::get('produtos/alterar/{id}',[ProdutosController::class, 'alterar'])->name('produtos.alterar');
+Route::post('produtos/alterar/{id}',[ProdutosController::class, 'editar'])->name('produtos.editar');
